@@ -15,7 +15,8 @@ module.exports = {
     post: function(req, res) {
       models.cows
         .add(req.body)
-        .then(() => res.sendStatus(201))
+        .then(addStatusObj => models.cows.getById(addStatusObj.insertId))
+        .then(result => res.send(result[0]))
         .catch(err => {
           console.error(err);
           res.sendStatus(500);

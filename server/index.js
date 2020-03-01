@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const router = require("./routes.js");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 /* Set up Middleware */
 app.use(morgan("dev"));
@@ -14,4 +14,4 @@ app.use(parser.json());
 app.use(router);
 
 /* Start the server */
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`app listening on port ${port}!`));

@@ -1,3 +1,5 @@
+const models = require("../models/models.js");
+
 module.exports = {
   cows: {
     get: function(req, res) {

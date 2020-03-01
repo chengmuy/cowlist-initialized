@@ -1,13 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const controllers = require("./controllers/controllers.js");
 
-router.get("/", (req, res) => res.send("Hello World!"));
+router.get("/api/cows", controllers.cows.get);
 
-router.get("/api/cows", (req, res) => {
-  res.send("You're gonna get all the cows");
-  console.log("req body >>> ", req.body);
-});
-
-router.post("/api/cows", (req, res) => res.send("You're gonna gimme a cow"));
+router.post("/api/cows", controllers.cows.post);
 
 module.exports = router;

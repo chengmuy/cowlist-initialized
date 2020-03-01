@@ -3,12 +3,23 @@ const models = require("../models/models.js");
 module.exports = {
   cows: {
     get: function(req, res) {
-      res.send("You're gonna get all the cows");
-      // console.log("req body >>> ", req.body);
+      models.cows
+        .getAll()
+        .then(results => res.send(results))
+        .catch(err => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     },
 
     post: function(req, res) {
-      res.send("You're gonna gimme a cow");
+      models.cows
+        .add(req.body)
+        .then(() => res.sendStatus(201))
+        .catch(err => {
+          console.error(err);
+          res.sendStatus(500);
+        });
     }
   }
 };
